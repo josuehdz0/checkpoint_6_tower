@@ -1,30 +1,28 @@
-<template>
+<template >
   <header>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
       <div class="row">
         <div class="col-12 p-0 ">
-          <!-- <Navbar /> -->
-        </div>
-      </div>
-    </div>
-  </header>
-  <main>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-2 order-md-2 p-0 bg-dark">
           <Navbar />
         </div>
-        <div class="col-md-10 order-md-1">
+      </div>
+    </div> -->
+  </header>
+  <main class="mybg">
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-md-2 order-md-2 p-0 bg-light sticky-top">
+          <Navbar />
+        </div>
+        <div class="col-md-10 order-md-1 p-0">
           <router-view />
         </div>
-
-
       </div>
     </div>
 
   </main>
-  <footer>
-  </footer>
+  <!-- <footer>
+  </footer> -->
 </template>
 
 <script>
@@ -48,10 +46,19 @@ export default {
   --main-height: calc(100vh - 32px - 64px);
 }
 
+.fill {
+  min-height: 100%;
+  height: 100%;
+}
+
 
 footer {
   display: grid;
   place-content: center;
   height: 32px;
+}
+
+.mybg {
+  background-color: rgb(255, 215, 104);
 }
 </style>
