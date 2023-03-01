@@ -7,7 +7,7 @@
       <h1>SITE INTRO?</h1>
     </div>
     <!-- NOTE this is were categorycard component will go? -->
-    <div class="row justify-content-evenly py-2 sticky-top">
+    <div class="row justify-content-evenly py-md-2 sticky-md-top fixed-bottom p-2">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-primary">All</button>
         <button type="button" class="btn btn-primary">Concerts</button>
