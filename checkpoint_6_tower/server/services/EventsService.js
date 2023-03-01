@@ -2,9 +2,31 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class EventsService {
+  async cancelEventById(eventId, requestorId) {
+    const event = await this.getEventbyId(eventId)
+    
+    
+    if (event.creatorId.toString() != requestorId){
+      throw new Forbidden('You cannot cancel an Event you did not create')
+    } 
+
+    
+
+    event.isCanceled = true
+  
+
+    await event.save()
+    return event
+  }
   async editEventById(eventId, eventData, requestorId) {
 
+
+
     const foundEvent = await this.getEventbyId(eventId)
+
+    if(foundEvent.isCanceled = true){
+      throw new BadRequest('This event has been cancelled already')
+    }
 
     if(foundEvent.creatorId.toString() != requestorId){
       throw new Forbidden('You are not allowed to edit an event you did not create')
