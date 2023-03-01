@@ -5,7 +5,7 @@ export const EventSchema = new Schema({
 
   
   name: basicStringType,
-  description: {...basicStringType, maxLength: 500},
+  description: {...basicStringType, maxLength: 5000},
   coverImg: { ...basicStringType, maxLength: 9000, required: true},
   location: basicStringType,
   capacity: {type: Number, default: 1},

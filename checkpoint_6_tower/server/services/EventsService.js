@@ -20,17 +20,16 @@ class EventsService {
   }
   async editEventById(eventId, eventData, requestorId) {
 
-
-
     const foundEvent = await this.getEventbyId(eventId)
-
-    if(foundEvent.isCanceled = true){
-      throw new BadRequest('This event has been cancelled already')
-    }
-
+    
     if(foundEvent.creatorId.toString() != requestorId){
       throw new Forbidden('You are not allowed to edit an event you did not create')
     }
+    
+    if(foundEvent.isCanceled == true){
+      throw new BadRequest('This event has been cancelled already')
+    }
+
 
     foundEvent.name = eventData.name || foundEvent.name
     foundEvent.description = eventData.description || foundEvent.description
