@@ -1,12 +1,47 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-      <h1>test for git</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <h2>Home</h2>
+    </div>
+    <div class="row">
+      <h1>SITE INTRO?</h1>
+    </div>
+    <div class="row justify-content-evenly py-2">
+      <div class="col-1">cat</div>
+      <div class="col-1">cat</div>
+      <div class="col-1">cat</div>
+      <div class="col-1">cat</div>
+      <div class="col-1">cat</div>
+      <div class="col-1">cat</div>
+      <div class="col-1">cat</div>
+    </div>
+    <div class="row justify-content-evenly">
+      <div class="col-3 p-0 my-2 eventcard">
+        <h4 class="text-center">event</h4>
+      </div>
+      <div class="col-3 p-0 my-2 eventcard">
+        <h4 class="text-center">event</h4>
+      </div>
+      <div class="col-3 p-0 my-2 eventcard">
+        <h4 class="text-center">event</h4>
+      </div>
+      <div class="col-3 p-0 my-2 eventcard">
+        <h4 class="text-center">event</h4>
+      </div>
+      <div class="col-3 p-0 my-2 eventcard">
+        <h4 class="text-center">event</h4>
+      </div>
+      <div class="col-3 p-0 my-2 eventcard">
+        <h4 class="text-center">event</h4>
+      </div>
+      <div class="col-3 p-0 my-2 eventcard">
+        <h4 class="text-center">event</h4>
+      </div>
+      <div class="col-3 p-0 my-2 eventcard">
+        <h4 class="text-center">event</h4>
+      </div>
+
+
     </div>
   </div>
 </template>
@@ -20,6 +55,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.eventcard {
+  background-color: rgb(172, 172, 172);
+  height: 20vh;
+  width: 20vh;
+}
+
 .home {
   display: grid;
   height: 80vh;
@@ -37,6 +78,7 @@ export default {
       object-fit: contain;
       object-position: center;
     }
+
   }
 }
 </style>

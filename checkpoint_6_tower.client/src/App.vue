@@ -1,12 +1,29 @@
 <template>
   <header>
-    <Navbar />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 p-0 ">
+          <!-- <Navbar /> -->
+        </div>
+      </div>
+    </div>
   </header>
   <main>
-    <router-view />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 order-md-2 p-0 bg-dark">
+          <Navbar />
+        </div>
+        <div class="col-md-10 order-md-1">
+          <router-view />
+        </div>
+
+
+      </div>
+    </div>
+
   </main>
-   <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
+  <footer>
   </footer>
 </template>
 
@@ -27,7 +44,7 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
-:root{
+:root {
   --main-height: calc(100vh - 32px - 64px);
 }
 

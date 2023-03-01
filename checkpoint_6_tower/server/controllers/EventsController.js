@@ -15,7 +15,9 @@ export class EventsController extends BaseController  {
     const eventData = req.body
     // NOTE making sure that event has creatorId attached to it from signed in user
     eventData.creatorId = req.userInfo.id
+    console.log(req.userInfo)
     console.log(res)
+
     const event = await eventsService.createEvent(eventData)
     return res.send(event)
 
