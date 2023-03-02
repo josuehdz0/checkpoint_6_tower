@@ -6,14 +6,14 @@
     <div class="row">
       <h1>SITE INTRO?</h1>
     </div>
-    <!-- NOTE this is were categorycard component will go? -->
+    <!-- NOTE this is were type filter -->
     <div class="row justify-content-evenly py-md-2 sticky-md-top fixed-bottom p-2">
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary">All</button>
-        <button type="button" class="btn btn-primary">Concerts</button>
-        <button type="button" class="btn btn-primary">Conventions</button>
-        <button type="button" class="btn btn-primary">Sports</button>
-        <button type="button" class="btn btn-primary">Digital</button>
+        <button @click="changeFilterType('')" type="button" class="btn btn-primary">All</button>
+        <button @click="changeFilterType('concert')" type="button" class="btn btn-primary">Concerts</button>
+        <button @click="changeFilterType('convention')" type="button" class="btn btn-primary">Conventions</button>
+        <button @click="changeFilterType('sport')" type="button" class="btn btn-primary">Sports</button>
+        <button @click="changeFilterType('digital')" type="button" class="btn btn-primary">Digital</button>
       </div>
     </div>
 
@@ -32,15 +32,16 @@
 </template>
 
 <script>
+import { onMounted, computed, ref } from "vue";
 import Pop from "../utils/Pop.js";
 import { eventsService } from "../services/EventsService.js";
-import { onMounted, computed } from "vue";
 import { AppState } from "../AppState.js";
 import EventCard from "../components/EventCard.vue";
 
 
 export default {
   setup() {
+    const filterType = ref('')
     async function getAllEvents() {
       try {
         await eventsService.getAllEvents();
@@ -51,11 +52,24 @@ export default {
 
     onMounted(() => {
       getAllEvents();
-    })
-    return {
+    });
 
-      events: computed(() => AppState.events),
-      account: computed(() => AppState.account)
+    return {
+      events: computed(() => {
+        if (!filterType.value) {
+          return AppState.events
+        }
+        else {
+          return AppState.events.filter(e => e.type == filterType.value)
+        }
+      }),
+
+      // events: computed(() => AppState.events),
+      account: computed(() => AppState.account),
+
+      changeFilterType(type) {
+        filterType.value = type
+      }
     }
   },
   components: { EventCard }
