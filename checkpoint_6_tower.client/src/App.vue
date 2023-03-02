@@ -17,8 +17,10 @@
         <div class="col-md-10 order-md-1 ">
           <div class="row p-0 d-none d-md-flex">
             <h1 class="pt-2">
-              <i class="mdi mdi-human p-0"></i>
-              <b class="">ower</b>
+              <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+                <i class="mdi mdi-human p-0"></i>
+                <b class="">ower</b>
+              </router-link>
             </h1>
           </div>
           <div class="row p-0">

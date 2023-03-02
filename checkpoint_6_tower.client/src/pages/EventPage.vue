@@ -1,10 +1,10 @@
 <template>
   <div class="EventPage container-fluid" v-if="event">
-    <div class="row justify-content-center">
-      <div class="col-md-11 my-3" :style="{ backgroundImage: `url(${event.coverImg})` }">
-        <div class="row infobackground ">
-          <div class="col-md-5 d-flex justify-content-center align-items-center">
-            <img :src="event.coverImg" alt="" class="img-fluid eventimg">
+    <div class="row justify-content-center eventinfo">
+      <div class="col-md-11 col-11 my-3 rounded" :style="{ backgroundImage: `url(${event.coverImg})` }">
+        <div class="row infobackground rounded ">
+          <div class="col-md-5 pt-4 pt-md-0 d-flex justify-content-center align-items-center">
+            <img :src="event.coverImg" alt="" class="img-fluid eventimg rounded">
           </div>
           <div class="col-md-7 py-2 d-flex flex-column">
 
@@ -22,7 +22,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row justify-content-between py-2">
+              <div class="row justify-content-between py-2 border-bottom border-3">
                 <div class="col-md-6 col-6">
                   <h4>
                     <b>{{ event.name }}</b>
@@ -107,27 +107,20 @@ export default {
   height: 45vh;
   width: 45vh;
   object-fit: cover;
+  // border: 2px solid rgb(211, 211, 211);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   // position: relative;
 
 }
 
+.eventinfo {
+  color: aliceblue;
+  text-shadow: 1px 1px 1px black;
+}
+
 .infobackground {
-  background-color: rgba(213, 213, 213, 0.309);
+  background-color: rgba(179, 179, 179, 0.147);
+  backdrop-filter: blur(10px);
 
-}
-
-.img-blur {
-  position: relative;
-  display: inline-block;
-}
-
-.img-blur:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: inset 0 0 10px 10px #ffffff;
 }
 </style>

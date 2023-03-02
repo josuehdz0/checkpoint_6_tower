@@ -4,12 +4,11 @@
 
     <div class="rounded card-bg" :style="{ backgroundImage: `url(${event.coverImg})` }">
 
-      <div class="eventcard  rounded">
+      <div class="eventcard ">
         <div class="">
-          <div class="cardtitle">
-            <div class="titlebackground">
-              <!-- NOTE trying to add this to title of card -->
-              <!-- :style="{ backgroundImage: `url(${event.coverImg})` }"  -->
+          <div class="cardtitle ">
+            <div class="titlebackground rounded-bottom">
+
 
 
               <div class="px-1 titlewords">
@@ -78,12 +77,14 @@ export default {
 }
 
 .titlebackground {
-  background-color: rgba(202, 224, 224, 0.253);
+  background-color: rgba(225, 225, 225, 0.162);
   position: sticky;
   top: 0;
   left: 0;
   background-size: cover;
-  background-position: bottom;
+  background-position: top;
+  backdrop-filter: blur(5px);
+
   // filter: blur(5px);
   // z-index: 1;
 
@@ -92,6 +93,9 @@ export default {
 .cardtitle {
   background-color: rgba(255, 255, 255, 0);
   background-size: cover;
+  background-position: top;
+
+
   // filter: blur(8px);
 
   // margin-bottom: 1rem;

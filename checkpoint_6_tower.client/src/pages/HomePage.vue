@@ -4,13 +4,13 @@
       <h1>SITE INTRO?</h1>
     </div>
     <!-- NOTE this is were type filter -->
-    <div class="row justify-content-evenly  sticky-md-top fixed-bottom py-2">
-      <div class="btn-group " role="group" aria-label="Basic example">
-        <button @click="changeFilterType('')" type="button" class="btn btn-primary">All</button>
-        <button @click="changeFilterType('concert')" type="button" class="btn btn-primary">Concerts</button>
-        <button @click="changeFilterType('convention')" type="button" class="btn btn-primary">Conventions</button>
-        <button @click="changeFilterType('sport')" type="button" class="btn btn-primary">Sports</button>
-        <button @click="changeFilterType('digital')" type="button" class="btn btn-primary">Digital</button>
+    <div class="row justify-content-evenly sticky-md-top fixed-bottom py-2 px-md-2 px-3 ">
+      <div class="btn-group filterbuttons p-0" role="group" aria-label="Basic example">
+        <button @click="changeFilterType('')" type="button" class="btn btn-primary ">All</button>
+        <button @click="changeFilterType('concert')" type="button" class="btn btn-primary ">Concerts</button>
+        <button @click="changeFilterType('convention')" type="button" class="btn btn-primary ">Conventions</button>
+        <button @click="changeFilterType('sport')" type="button" class="btn btn-primary ">Sports</button>
+        <button @click="changeFilterType('digital')" type="button" class="btn btn-primary ">Digital</button>
       </div>
     </div>
 
@@ -97,5 +97,10 @@ export default {
     }
 
   }
+}
+
+.filterbuttons {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
 }
 </style>
