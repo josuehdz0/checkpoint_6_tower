@@ -1,14 +1,11 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
-      <h2>Home</h2>
-    </div>
-    <div class="row">
+    <div class="row p-0 m-0">
       <h1>SITE INTRO?</h1>
     </div>
     <!-- NOTE this is were type filter -->
-    <div class="row justify-content-evenly py-md-2 sticky-md-top fixed-bottom p-2">
-      <div class="btn-group" role="group" aria-label="Basic example">
+    <div class="row justify-content-evenly  sticky-md-top fixed-bottom py-2">
+      <div class="btn-group " role="group" aria-label="Basic example">
         <button @click="changeFilterType('')" type="button" class="btn btn-primary">All</button>
         <button @click="changeFilterType('concert')" type="button" class="btn btn-primary">Concerts</button>
         <button @click="changeFilterType('convention')" type="button" class="btn btn-primary">Conventions</button>
