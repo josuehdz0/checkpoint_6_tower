@@ -85,10 +85,16 @@
               <button type="submit" class="btn btn-primary my-3 ">Post Comment</button>
             </div>
           </div>
-          <div class="row">
-            others comments?
-          </div>
         </form>
+        <div class="row justify-content-center">
+          <div v-for="c in comments" class="col-11 py-2">
+            <img class="img-fluid profileimg" :src="c.creator.picture" :alt="c.creator.name + 'picture'"
+              :title="c.creator.name">
+
+
+            {{ c.body }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
