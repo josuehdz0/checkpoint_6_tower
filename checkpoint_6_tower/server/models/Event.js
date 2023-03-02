@@ -21,7 +21,7 @@ export const EventSchema = new Schema({
 
 EventSchema.virtual('creator',{
   ref: 'Account',
-  localField:'creatodId',
+  localField:'creatorId',
   foreignField: '_id',
   justOne: true
 })

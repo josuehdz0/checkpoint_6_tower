@@ -47,7 +47,7 @@
 
             <div class="mt-auto">
               <div class="row justify-content-between py-2">
-                <div class="col-md-4 col-6">Spots left</div>
+                <div class="col-md-4 col-6">{{ event.capacity }} Spots left</div>
                 <div class="col-md-4 col-6">Attend btn</div>
               </div>
             </div>
