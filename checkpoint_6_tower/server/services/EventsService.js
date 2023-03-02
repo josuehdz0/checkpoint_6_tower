@@ -18,6 +18,13 @@ class EventsService {
     await event.save()
     return event
   }
+
+  // async increaseEventCapacity(event){
+  //   const event = await this.getEventbyId(event)
+
+  // }
+
+
   async editEventById(eventId, eventData, requestorId) {
 
     const foundEvent = await this.getEventbyId(eventId)
