@@ -15,5 +15,8 @@ export const AppState = reactive({
      /** @type {import('./models/Attendee.js').Attendee[]} */
      attendees: [],
 
+     /** @type {import('./models/Comment.js').Comment[]} */
+     comments: [],
+
     
 })

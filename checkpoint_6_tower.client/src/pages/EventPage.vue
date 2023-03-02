@@ -104,6 +104,7 @@ import { AppState } from "../AppState.js"
 import { useRoute, useRouter } from "vue-router";
 import { eventsService } from "../services/EventsService.js";
 import { attendeesService } from "../services/AttendeesService.js"
+import { commentsService } from "../services/CommentsService.js"
 import Pop from "../utils/Pop.js";
 
 export default {
@@ -130,17 +131,28 @@ export default {
       }
     }
 
+    async function getCommentsByEvent() {
+      try {
+        const eventId = route.params.eventId;
+        await commentsService.getCommentByEvent(eventId)
+      } catch (error) {
+        Pop.error(error.message)
+      }
+    }
+
 
     watchEffect(() => {
       if (route.params.eventId) {
         getOneEventById();
         getEventAttendees();
+        getCommentsByEvent()
       }
     })
 
     return {
       event: computed(() => AppState.event),
-      attendees: computed(() => AppState.attendees)
+      attendees: computed(() => AppState.attendees),
+      comments: computed(() => AppState.comments)
     }
   }
 }
