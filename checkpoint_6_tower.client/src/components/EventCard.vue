@@ -1,36 +1,33 @@
 <template>
-  <div class="rounded card-bg" :style="{ backgroundImage: `url(${event.coverImg})` }">
+  <!-- NOTE Routes to specific Event Page by Id -->
+  <router-link class="selectable" :to="{ name: 'Event', params: { eventId: event.id } }">
 
-    <div class="eventcard  rounded">
-      <div class="">
-        <div class="cardtitle">
-          <div class="titlebackground">
-            <!-- NOTE trying to add this to title of card -->
-            <!-- :style="{ backgroundImage: `url(${event.coverImg})` }"  -->
+    <div class="rounded card-bg" :style="{ backgroundImage: `url(${event.coverImg})` }">
+
+      <div class="eventcard  rounded">
+        <div class="">
+          <div class="cardtitle">
+            <div class="titlebackground">
+              <!-- NOTE trying to add this to title of card -->
+              <!-- :style="{ backgroundImage: `url(${event.coverImg})` }"  -->
 
 
-            <div class="px-1 titlewords">
-              <b>{{ event.name }}</b><br>
-              {{ event.location }}
-              {{ event.startDate }}
-              <div class="text-end pe-1">
-                Spots left
+              <div class="px-1 titlewords">
+                <b>{{ event.name }}</b><br>
+                {{ event.location }}
+                {{ event.startDate }}
+                <div class="text-end pe-1">
+                  Spots left
+                </div>
               </div>
-
             </div>
-
-
           </div>
         </div>
-
       </div>
-
-
-
-
-
     </div>
-  </div>
+
+
+  </router-link>
 </template>
 
 
