@@ -96,8 +96,9 @@
               :title="c.creator.name">
             {{ c.body }}
           </div>
+          <!-- NOTE delete button only shows up for comment creator -->
           <div v-if="account.id == c.creatorId" class="col-4 p-3 d-flex justify-content-end">
-            <button class="btn btn-danger">
+            <button @click="deleteComment(c.id)" class="btn btn-danger">
               <div class="mdi mdi-trash-can-outline"></div>
             </button>
           </div>
@@ -185,6 +186,17 @@ export default {
           editable.value = {}
         } catch (error) {
           logger.log(error)
+          Pop.error(error.message)
+        }
+      },
+
+      async deleteComment(commentId) {
+        try {
+          if (await Pop.confirm('You sure you want to delete this comment?')) {
+            await commentsService.deleteComment(commentId)
+          }
+        } catch (error) {
+          logger.error(error)
           Pop.error(error.message)
         }
       }
