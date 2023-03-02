@@ -60,11 +60,18 @@
     </div>
     <!-- NOTE Profiles attending -->
     <div class="row justify-content-center py-2 ">
-      <div v-for="a in attendees" class="col-11 py-2 border-top border-2 border-primary">
-        Attendees:
+
+      <div v-if="attendees.length >= 1" v-for="a in attendees" class="col-11 py-2 border-top border-2 border-primary">
+        <b>Attendees: </b>
         <img class="img-fluid profileimg" :src="a.picture" :alt="a.name + 'picture'" :title="a.name">
       </div>
+      <div v-else class="col-11 py-2 border-top border-2 border-primary text-center">
+        <b>Be the first to get tickets to this event!</b>
+      </div>
+
     </div>
+    <!-- NOTE Comments will and comment form -->
+
   </div>
   <div v-else>
     loading
