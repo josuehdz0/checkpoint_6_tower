@@ -71,7 +71,26 @@
 
     </div>
     <!-- NOTE Comments will and comment form -->
-
+    <div class="row justify-content-center py-2 mb-2">
+      <div class="col-11">
+        <!-- NOTE Posting comment form -->
+        <form>
+          <div class="row p-3 justify-content-end">
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                style="height: 100px"></textarea>
+              <label for="floatingTextarea2" class="ps-4">Comment here!</label>
+            </div>
+            <div class="col-md-3 d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary my-3 ">Post Comment</button>
+            </div>
+          </div>
+          <div class="row">
+            others comments?
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
   <div v-else>
     loading
