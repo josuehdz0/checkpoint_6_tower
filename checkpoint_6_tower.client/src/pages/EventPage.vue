@@ -1,6 +1,7 @@
 <template>
   <div class="EventPage container-fluid" v-if="event">
     <div class="row justify-content-center eventinfo">
+      <!-- NOTE Event Details here -->
       <div class="col-md-11 col-11 my-3 rounded" :style="{ backgroundImage: `url(${event.coverImg})` }">
         <div class="row infobackground rounded ">
           <div class="col-md-5 pt-4 pt-md-0 d-flex justify-content-center align-items-center">
@@ -15,8 +16,8 @@
                     <button class="btn btn-primary btn-sm " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="mdi mdi-dots-horizontal"></i>
                     </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Edit Event</a></li>
+                    <ul class="dropdown-menu dropdowntext">
+                      <li><a class="dropdown-item " href="#">Edit Event</a></li>
                       <li><a class="dropdown-item" href="#">Cancel Event</a></li>
                     </ul>
                   </div>
@@ -34,7 +35,7 @@
                   </p>
 
                 </div>
-                <div class="col-md-4 col-6">
+                <div class="col-md-4 col-6 d-flex justify-content-end">
                   <b>
                     {{ event.startDate }}
                   </b>
@@ -56,7 +57,13 @@
           </div>
         </div>
       </div>
-
+    </div>
+    <!-- NOTE Profiles attending -->
+    <div class="row justify-content-center py-2 ">
+      <div v-for="a in attendees" class="col-11 py-2 border-top border-2 border-primary">
+        Attendees:
+        <img class="img-fluid profileimg" :src="a.picture" :alt="a.name + 'picture'" :title="a.name">
+      </div>
     </div>
   </div>
   <div v-else>
@@ -70,6 +77,7 @@ import { watchEffect, computed } from "vue";
 import { AppState } from "../AppState.js"
 import { useRoute, useRouter } from "vue-router";
 import { eventsService } from "../services/EventsService.js";
+import { attendeesService } from "../services/AttendeesService.js"
 import Pop from "../utils/Pop.js";
 
 export default {
@@ -87,15 +95,26 @@ export default {
       }
     };
 
+    async function getEventAttendees() {
+      try {
+        const eventId = route.params.eventId;
+        await attendeesService.getEventAttendees(eventId)
+      } catch (error) {
+        Pop.error(error.message)
+      }
+    }
+
 
     watchEffect(() => {
       if (route.params.eventId) {
         getOneEventById();
+        getEventAttendees();
       }
     })
 
     return {
       event: computed(() => AppState.event),
+      attendees: computed(() => AppState.attendees)
     }
   }
 }
@@ -118,9 +137,19 @@ export default {
   text-shadow: 1px 1px 1px black;
 }
 
+.dropdowntext {
+  text-shadow: 0px 0px 0px;
+}
+
 .infobackground {
   background-color: rgba(179, 179, 179, 0.147);
   backdrop-filter: blur(10px);
+}
 
+.profileimg {
+  height: 8vh;
+  width: 8vh;
+  object-fit: cover;
+  border-radius: 50%;
 }
 </style>
