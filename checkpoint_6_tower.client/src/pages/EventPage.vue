@@ -73,12 +73,13 @@
     <!-- NOTE Comments will and comment form -->
     <div class="row justify-content-center py-2 mb-2">
       <div class="col-11">
+
         <!-- NOTE Posting comment form -->
-        <form>
+        <form @submit.prevent="createComment()">
           <div class="row p-3 justify-content-end">
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                style="height: 100px"></textarea>
+              <textarea v-model="editable.body" required class="form-control" placeholder="Leave a comment here" id="body"
+                style="height: 100px" name="body"></textarea>
               <label for="floatingTextarea2" class="ps-4">Comment here!</label>
             </div>
             <div class="col-md-3 d-flex justify-content-end">
@@ -86,6 +87,8 @@
             </div>
           </div>
         </form>
+
+
         <div class="row justify-content-center">
           <div v-for="c in comments" class="col-11 py-2">
             <img class="img-fluid profileimg" :src="c.creator.picture" :alt="c.creator.name + 'picture'"
@@ -105,16 +108,19 @@
 
 
 <script>
-import { watchEffect, computed } from "vue";
+import { watchEffect, computed, ref } from "vue";
 import { AppState } from "../AppState.js"
 import { useRoute, useRouter } from "vue-router";
 import { eventsService } from "../services/EventsService.js";
 import { attendeesService } from "../services/AttendeesService.js"
 import { commentsService } from "../services/CommentsService.js"
 import Pop from "../utils/Pop.js";
+import { logger } from "../utils/Logger.js";
 
 export default {
   setup() {
+
+    const editable = ref({})
     const route = useRoute();
     const router = useRouter;
 
@@ -147,6 +153,9 @@ export default {
     }
 
 
+
+
+
     watchEffect(() => {
       if (route.params.eventId) {
         getOneEventById();
@@ -156,9 +165,23 @@ export default {
     })
 
     return {
+      editable,
       event: computed(() => AppState.event),
       attendees: computed(() => AppState.attendees),
-      comments: computed(() => AppState.comments)
+      comments: computed(() => AppState.comments),
+
+
+      async createComment() {
+        try {
+          const commentData = editable.value
+          commentData.eventId = route.params.eventId
+          await commentsService.createComment(commentData)
+          editable.value = {}
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+      }
     }
   }
 }
