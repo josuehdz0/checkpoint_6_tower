@@ -11,7 +11,7 @@
 
             <div>
               <div class="row justify-content-end">
-                <div class="col-md-2  d-flex justify-content-end">
+                <div v-if="account.id == event.creatorId" class="col-md-2  d-flex justify-content-end">
                   <div class="btn-group dropstart">
                     <button class="btn btn-primary btn-sm " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="mdi mdi-dots-horizontal"></i>
@@ -21,6 +21,9 @@
                       <li><a class="dropdown-item" href="#">Cancel Event</a></li>
                     </ul>
                   </div>
+                </div>
+                <div v-else class="col-md-2  d-flex justify-content-end">
+                  <!-- NOTE editing or cancelling event button only available for creator of event -->
                 </div>
               </div>
               <div class="row justify-content-between py-2 border-bottom border-3">
@@ -181,7 +184,7 @@ export default {
       if (route.params.eventId) {
         getOneEventById();
         getEventAttendees();
-        getCommentsByEvent()
+        getCommentsByEvent();
       }
     })
 
