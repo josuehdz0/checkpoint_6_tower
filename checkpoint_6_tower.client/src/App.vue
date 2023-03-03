@@ -11,10 +11,10 @@
   <main class="mybg">
     <div class="container-fluid ">
       <div class="row">
-        <div class="col-md-2 order-md-2 p-0 bg-light sticky-top">
+        <div class="col-md-1 order-md-2 p-0 bg-light sticky-top">
           <Navbar />
         </div>
-        <div class="col-md-10 order-md-1 ">
+        <div class="col-md-11 order-md-1 ">
           <div class="row p-0 d-none d-md-flex">
             <h1 class="pt-2">
               <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">

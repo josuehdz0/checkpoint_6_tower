@@ -99,7 +99,7 @@
                 style="height: 100px" name="body"></textarea>
               <label for="floatingTextarea2" class="ps-4">Comment here!</label>
             </div>
-            <div class="col-md-3 d-flex justify-content-end">
+            <div class="col-md-3 d-flex justify-content-md-end">
               <button type="submit" class="btn btn-primary my-3 ">Post Comment</button>
             </div>
           </div>
