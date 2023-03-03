@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js"
 import { Attendee } from "../models/Attendee.js"
+import { MyEvent } from "../models/Event.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
@@ -30,6 +31,15 @@ class AttendeesService {
   // TODO we need to splice out the ticket that is attached to the event (appstate where we have ALL the tickets)
   // TODO we need to splice out the ticket that is attached to your account (appstate where we are storing OUR tickets)
   // TODO we need to update the event capacity 
+
+
+  async getEventsImAttending(){
+    const res = await api.get('account/tickets')
+    logger.log('getting Events Im attending', res.data)
+    return AppState.myEvents = res.data.map(e => new MyEvent(e))
+    
+  }
+
 
 }
 

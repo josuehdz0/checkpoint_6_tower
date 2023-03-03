@@ -9,3 +9,10 @@ export class Attendee extends Profile{
     
   }
 }
+
+// export class MyEvent extends Attendee {
+//   constructor(data){
+//     super(data.attendee)
+//     this.ticketId = data.id
+//   }
+// }

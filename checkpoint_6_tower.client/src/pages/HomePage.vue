@@ -1,7 +1,12 @@
 <template>
   <div class="container-fluid">
-    <div class="row p-0 m-0">
-      <h1>SITE INTRO?</h1>
+    <div class="row justify-content-center">
+      <!-- NOTE crazy marquee here -->
+      <marquee behavior="" direction="">
+        <div class="col-12 p-3 m-3">
+          <h2>RESERVE YOUR SEAT WITH US </h2>
+        </div>
+      </marquee>
     </div>
     <!-- NOTE this is were type filter -->
     <div class="row justify-content-evenly sticky-md-top fixed-bottom py-2 px-md-2 px-3 ">

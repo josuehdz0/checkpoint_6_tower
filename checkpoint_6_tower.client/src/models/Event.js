@@ -12,7 +12,7 @@ export class Event {
     this.isCanceled = data.isCanceled 
     this.type = data.type
     this.creatorId = data.creatorId;
-    this.creator = new Profile(data.creator);
+    // this.creator =  new Profile(data.creator)
   }
 }
 
@@ -20,5 +20,6 @@ export class MyEvent extends Event {
   constructor(data){
     super(data.event)
     this.ticketId = data.id
+    
   }
 }

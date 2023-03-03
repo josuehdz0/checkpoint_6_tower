@@ -52,7 +52,7 @@
                 <button class="btn collapsed p-0 " type="button" data-bs-toggle="collapse"
                   data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                   <div v-if="account.picture || user.picture">
-                    <img :src="account.picture || user.picture" alt="account photo" height="70" class="rounded" />
+                    <img :src="account.picture || user.picture" alt="account photo" height="70" class="myprofile" />
                   </div>
                 </button>
               </h2>
@@ -174,6 +174,10 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.myprofile {
+  border-radius: 50%;
 }
 
 @media screen and (min-width: 768px) {
