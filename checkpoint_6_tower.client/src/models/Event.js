@@ -11,6 +11,7 @@ export class Event {
     this.startDate = data.startDate
     this.isCancelled = data.isCancelled
     this.type = data.type
-    this.creatorId = new Profile(data.creatorId);
+    this.creatorId = data.creatorId;
+    this.creator = new Profile(data.creator);
   }
 }

@@ -4,7 +4,7 @@
       <!-- NOTE Event Details here -->
       <div class="col-md-11 col-11 my-3 rounded" :style="{ backgroundImage: `url(${event.coverImg})` }">
         <div class="row infobackground rounded ">
-          <div class="col-md-5 pt-4 pt-md-0 d-flex justify-content-center align-items-center">
+          <div class="col-md-5 pt-4 p-md-3 p-0 d-flex justify-content-center align-items-center">
             <img :src="event.coverImg" alt="" class="img-fluid eventimg rounded">
           </div>
           <div class="col-md-7 py-2 d-flex flex-column">
