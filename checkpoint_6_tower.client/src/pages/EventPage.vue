@@ -52,7 +52,7 @@
             <div class="mt-auto">
               <div class="row justify-content-between py-2">
                 <div v-if="event.capacity > 0" class="col-md-4 col-6">{{ event.capacity }} Spots left</div>
-                <div v-else class="col-md-4 col-6"> SOLD OUT</div>
+                <div v-else class="col-md-4 col-6 d-flex align-items-center"> <b class="text-warning">SOLD OUT</b> </div>
                 <div class="col-md-5 col-6 d-flex justify-content-end">
                   <div v-if="account.id && !event.isCancelled">
 
