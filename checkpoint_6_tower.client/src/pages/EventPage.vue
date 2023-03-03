@@ -49,7 +49,19 @@
             <div class="mt-auto">
               <div class="row justify-content-between py-2">
                 <div class="col-md-4 col-6">{{ event.capacity }} Spots left</div>
-                <div class="col-md-4 col-6">Attend btn</div>
+                <div class="col-md-5 col-6 d-flex justify-content-end">
+                  <div v-if="account.id">
+
+                    <button v-if="!foundAttendee" @click="attendEvent()" :disabled="event.isCancelled"
+                      class="btn btn-primary">
+                      <div class="mdi mdi-human"> Attend Event</div>
+                    </button>
+                    <button v-else @click="declineEvent()" class="btn btn-danger">
+                      <div class="mdi mdi-human"> Decline</div>
+                    </button>
+
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -61,9 +73,10 @@
     <!-- NOTE Profiles attending -->
     <div class="row justify-content-center py-2 ">
 
-      <div v-if="attendees.length >= 1" v-for="a in attendees" class="col-11 py-2 border-top border-2 border-primary">
+      <div v-if="attendees.length >= 1" class="col-11 py-2 border-top border-2 border-primary">
         <b>Attendees: </b>
-        <img class="img-fluid profileimg" :src="a.picture" :alt="a.name + 'picture'" :title="a.name">
+        <img v-for="a in attendees" class="img-fluid profileimg p-1" :src="a.picture" :alt="a.name + 'picture'"
+          :title="a.name">
       </div>
       <div v-else class="col-11 py-2 border-top border-2 border-primary text-center">
         <b>Be the first to get tickets to this event!</b>
@@ -162,6 +175,8 @@ export default {
 
 
 
+
+
     watchEffect(() => {
       if (route.params.eventId) {
         getOneEventById();
@@ -176,6 +191,7 @@ export default {
       attendees: computed(() => AppState.attendees),
       comments: computed(() => AppState.comments),
       account: computed(() => AppState.account),
+      foundAttendee: computed(() => AppState.attendees.find(a => a.id == AppState.account.id)),
 
 
       async createComment() {
@@ -198,6 +214,15 @@ export default {
         } catch (error) {
           logger.error(error)
           Pop.error(error.message)
+        }
+      },
+
+      async attendEvent() {
+        try {
+          await attendeesService.attendEvent({ eventId: route.params.eventId });
+        } catch (error) {
+          logger.error(error);
+          Pop.error(error.message);
         }
       }
 
