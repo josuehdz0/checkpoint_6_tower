@@ -9,8 +9,8 @@
       class="navbar navbar-expand-lg navbar-light bg-light d-md-none justify-content-md-between px-3 sticky-top fixed-md-top">
 
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-        <div class="d-flex flex-column align-items-center">
-          HOME
+        <div class="d-flex flex-column align-items-center fs-1">
+          <b class="mdi mdi-human p-0">ower</b>
         </div>
       </router-link>
       <button class="dropdown-toggle btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -76,7 +76,7 @@
                         logout
                       </b>
                     </div>
-                    <button class="btn text-center pt-4">
+                    <button class="btn text-center pt-4" data-bs-toggle="modal" data-bs-target="#eventModal">
                       <b>
                         Create Event
                       </b>

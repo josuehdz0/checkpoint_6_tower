@@ -45,6 +45,7 @@ export default {
 
 
 <style lang="scss" scoped>
+// TODO make media query for this card
 .eventcard {
   // background-color: rgb(201, 181, 181);
   height: 25vh;

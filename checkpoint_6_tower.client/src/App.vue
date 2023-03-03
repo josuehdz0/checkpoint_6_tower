@@ -34,11 +34,17 @@
   </main>
   <!-- <footer>
   </footer> -->
+
+  <ModalComponent id="eventModal">
+    <EventForm />
+  </ModalComponent>
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+import EventForm from "./components/EventForm.vue"
+import ModalComponent from "./components/ModalComponent.vue"
 import Navbar from './components/Navbar.vue'
 
 export default {
@@ -47,7 +53,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar }
+  components: { Navbar, ModalComponent, EventForm }
 }
 </script>
 <style lang="scss">

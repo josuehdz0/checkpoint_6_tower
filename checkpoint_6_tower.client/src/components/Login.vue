@@ -5,7 +5,7 @@
     </button>
     <div v-else class="d-flex justify-content-between">
       <div class="my-2 my-lg-0">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal">
           Create Event
         </button>
       </div>
