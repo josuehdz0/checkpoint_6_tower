@@ -68,6 +68,10 @@ export default {
   height: 100%;
 }
 
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 
 footer {
   display: grid;

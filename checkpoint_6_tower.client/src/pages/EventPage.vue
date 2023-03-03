@@ -89,25 +89,29 @@
       </div>
     </div>
     <!-- NOTE Profiles attending -->
-    <div class="row justify-content-center py-2 ">
+    <div class="row justify-content-center mx-md-5 m-2 border border-secondary rounded border-2 bg-light">
 
       <div v-if="account.id">
 
-        <div v-if="attendees.length >= 1" class="col-11 py-2 border-top border-2 border-primary">
+        <div v-if="attendees.length >= 1" class="col-11 py-2  ">
           <b>Attendees: </b>
           <img v-for="a in attendees" class="img-fluid profileimg p-1" :src="a.picture" :alt="a.name + 'picture'"
             :title="a.name">
         </div>
-        <div v-else class="col-11 py-2 border-top border-2 border-primary text-center">
+        <div v-else class="col-11 py-2  text-center">
           <b>Be the first to get tickets to this event!</b>
         </div>
 
       </div>
 
+      <div v-else>
+        <b>Event Comments</b>
+      </div>
+
 
     </div>
     <!-- NOTE Comments will and comment form -->
-    <div class="row justify-content-center py-2 mb-2">
+    <div class="row justify-content-center mx-md-5 m-2 border border-secondary rounded border-2 bg-light">
       <div class="col-11">
 
         <!-- NOTE Posting comment form -->
@@ -125,8 +129,14 @@
           </div>
         </form>
 
+        <div v-if="!account.id" class="row justify-content-center py-2">
+          <h5 class="text-center">
+            Login to post a comment
+          </h5>
+        </div>
 
-        <div v-for="c in comments" class="row justify-content-center">
+
+        <div v-for="c in comments" class="row justify-content-center border-top border-secondary  border-2">
           <div class="col-8 py-2">
             <img class="img-fluid profileimg" :src="c.creator.picture" :alt="c.creator.name + 'picture'"
               :title="c.creator.name">
