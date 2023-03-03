@@ -15,6 +15,15 @@ class AttendeesService {
     AppState.attendees.push(new Attendee(res.data))
   }
 
+  async declineEvent(ticketId){
+    const res = await api.delete(`api/tickets/${ticketId}`)
+    logger.log('removing ticket/ declining Event', res.data)
+    const attendeeIndex = AppState.attendees.findIndex(a =>a.id == ticketId)
+    if (attendeeIndex !== -1){
+      AppState.attendees.splice(attendeeIndex,1)
+    }
+  }
+
 }
 
 export const attendeesService = new AttendeesService()

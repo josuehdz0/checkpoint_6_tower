@@ -56,7 +56,7 @@
                       class="btn btn-primary">
                       <div class="mdi mdi-human"> Attend Event</div>
                     </button>
-                    <button v-else @click="declineEvent()" class="btn btn-danger">
+                    <button v-else @click="declineEvent(foundAttendee.ticketId)" class="btn btn-danger">
                       <div class="mdi mdi-human"> Decline</div>
                     </button>
 
@@ -223,6 +223,17 @@ export default {
         } catch (error) {
           logger.error(error);
           Pop.error(error.message);
+        }
+      },
+
+      async declineEvent(ticketId) {
+        try {
+          if (await Pop.confirm('Are you sure you no longer want to attend this event?')) {
+            await attendeesService.declineEvent(ticketId)
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.error(error.message)
         }
       }
 
