@@ -53,9 +53,9 @@
               <div class="row justify-content-between py-2">
                 <div class="col-md-4 col-6">{{ event.capacity }} Spots left</div>
                 <div class="col-md-5 col-6 d-flex justify-content-end">
-                  <div v-if="account.id">
+                  <div v-if="account.id && !event.isCancelled">
 
-                    <button v-if="!foundAttendee" @click="attendEvent()" :disabled="event.isCancelled"
+                    <button v-if="!foundAttendee" @click="attendEvent()" :disabled="!event.isCancelled <= 0"
                       class="btn btn-primary">
                       <div class="mdi mdi-human"> Attend Event</div>
                     </button>
