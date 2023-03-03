@@ -47,8 +47,8 @@ export default {
 <style lang="scss" scoped>
 .eventcard {
   // background-color: rgb(201, 181, 181);
-  height: 30vh;
-  width: 30vh;
+  height: 25vh;
+  width: 25vh;
   color: aliceblue;
   display: flex;
   flex-direction: column;
