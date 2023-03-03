@@ -16,7 +16,7 @@
                 {{ event.location }}
                 {{ event.startDate }}
                 <div class="text-end pe-1">
-                  Spots left
+                  Spots left: {{ event.capacity }}
                 </div>
               </div>
             </div>

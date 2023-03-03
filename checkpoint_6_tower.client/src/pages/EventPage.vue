@@ -12,14 +12,26 @@
             <div>
               <div class="row justify-content-end">
                 <div v-if="account.id == event.creatorId" class="col-md-2  d-flex justify-content-end">
-                  <div class="btn-group dropstart">
+
+                  <div v-if="!event.isCanceled" class="btn-group">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="mdi mdi-dots-horizontal "></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <div class="dropdowntext selectable ps-2" @click="cancelEvent(event.id)">
+                        Cancel Event
+                      </div>
+                    </ul>
+                  </div>
+                  <!-- <div class="btn-group dropstart">
                     <button class="btn btn-primary btn-sm " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="mdi mdi-dots-horizontal"></i>
                     </button>
                     <ul class="dropdown-menu dropdowntext">
-                      <li><a class="dropdown-item" href="#">Cancel Event</a></li>
+                      <li @click="cancelEvent(eventId)"><a class="dropdown-item" href="#">Cancel Event</a></li>
                     </ul>
-                  </div>
+                  </div> -->
                 </div>
                 <div v-else class="col-md-2  d-flex justify-content-end">
                   <!-- NOTE editing or cancelling event button only available for creator of event -->
@@ -188,6 +200,8 @@ export default {
 
 
 
+
+
     watchEffect(() => {
       if (route.params.eventId) {
         getOneEventById();
@@ -242,6 +256,17 @@ export default {
           if (await Pop.confirm('Are you sure you no longer want to attend this event?')) {
             await attendeesService.declineEvent(ticketId)
           }
+        } catch (error) {
+          logger.error(error)
+          Pop.error(error.message)
+        }
+      },
+
+      async cancelEvent(eventId) {
+        try {
+          await eventsService.cancelEvent(eventId)
+          // if (await Pop.confirm('You sure you want to cancel this event?')) {
+          // }
         } catch (error) {
           logger.error(error)
           Pop.error(error.message)
