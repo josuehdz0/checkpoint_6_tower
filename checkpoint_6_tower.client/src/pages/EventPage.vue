@@ -17,7 +17,6 @@
                       <i class="mdi mdi-dots-horizontal"></i>
                     </button>
                     <ul class="dropdown-menu dropdowntext">
-                      <li><a class="dropdown-item " href="#">Edit Event</a></li>
                       <li><a class="dropdown-item" href="#">Cancel Event</a></li>
                     </ul>
                   </div>
@@ -50,14 +49,14 @@
             </div>
 
             <div class="mt-auto">
-              <div class="row justify-content-between py-2">
+              <div v-if="!event.isCanceled" class="row justify-content-between py-2">
                 <div v-if="event.capacity > 0" class="col-md-4 col-6">{{ event.capacity }} Spots left</div>
                 <div v-else class="col-md-4 col-6 d-flex align-items-center"> <b class="text-warning">SOLD OUT</b> </div>
                 <div class="col-md-5 col-6 d-flex justify-content-end">
-                  <div v-if="account.id && !event.isCancelled">
 
-                    <button v-if="!foundAttendee" @click="attendEvent()" :disabled="!event.isCancelled <= 0"
-                      class="btn btn-primary">
+                  <div v-if="account.id">
+                    <button v-if="!foundAttendee" @click="attendEvent()"
+                      :disabled="event.isCanceled || event.capacity <= 0" class="btn btn-primary">
                       <div class="mdi mdi-human"> Attend Event</div>
                     </button>
                     <button v-else @click="declineEvent(foundAttendee.ticketId)" class="btn btn-danger">
@@ -66,6 +65,9 @@
 
                   </div>
                 </div>
+              </div>
+              <div v-else class="row justify-content-between py-2">
+                <h3 class="text-danger"> EVENT HAS BEEN CANCELLED</h3>
               </div>
             </div>
 
@@ -77,14 +79,19 @@
     <!-- NOTE Profiles attending -->
     <div class="row justify-content-center py-2 ">
 
-      <div v-if="attendees.length >= 1" class="col-11 py-2 border-top border-2 border-primary">
-        <b>Attendees: </b>
-        <img v-for="a in attendees" class="img-fluid profileimg p-1" :src="a.picture" :alt="a.name + 'picture'"
-          :title="a.name">
+      <div v-if="account.id">
+
+        <div v-if="attendees.length >= 1" class="col-11 py-2 border-top border-2 border-primary">
+          <b>Attendees: </b>
+          <img v-for="a in attendees" class="img-fluid profileimg p-1" :src="a.picture" :alt="a.name + 'picture'"
+            :title="a.name">
+        </div>
+        <div v-else class="col-11 py-2 border-top border-2 border-primary text-center">
+          <b>Be the first to get tickets to this event!</b>
+        </div>
+
       </div>
-      <div v-else class="col-11 py-2 border-top border-2 border-primary text-center">
-        <b>Be the first to get tickets to this event!</b>
-      </div>
+
 
     </div>
     <!-- NOTE Comments will and comment form -->
