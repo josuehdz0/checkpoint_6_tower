@@ -26,7 +26,7 @@ class CommentsService{
     logger.log('deleing comment', res.data)
     const commentIndex = AppState.comments.findIndex(c => c.id == commentId)
 
-    console.log('test', commentIndex)
+    logger.log('test', commentIndex)
     if (commentIndex !== -1) {
       AppState.comments.splice(commentIndex, 1) 
     }
